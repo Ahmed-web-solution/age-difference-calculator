@@ -1,0 +1,16 @@
+{
+  "name": "Age Difference Calculator",
+  "short_name": "Age Calc",
+  "description": "Calculate the age difference between two people",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F2ED",
+  "theme_color": "#7DD3C0",
+  "icons": [
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
