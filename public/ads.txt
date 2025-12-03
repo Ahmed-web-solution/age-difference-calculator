@@ -1,0 +1,18 @@
+# Ads.txt for age.fincalcbox.com
+# Google AdSense Publisher File
+# Update this file with your actual AdSense publisher ID after approval
+
+# Format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# Replace pub-XXXXXXXXXXXXXXXX with your actual publisher ID from AdSense
+
+# Example (DO NOT USE - Replace with your own):
+# google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0
+
+# Instructions:
+# 1. Apply for Google AdSense at https://www.google.com/adsense
+# 2. Get approved and receive your publisher ID
+# 3. Replace the placeholder above with: google.com, pub-YOUR_ID, DIRECT, f08c47fec0942fa0
+# 4. Remove these instruction comments
+# 5. Deploy updated ads.txt file
+
+# This file must be accessible at: https://age.fincalcbox.com/ads.txt

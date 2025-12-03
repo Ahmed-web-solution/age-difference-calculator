@@ -1,3 +1,9 @@
+# Robots.txt for age.fincalcbox.com
+# Age Difference Calculator - SEO optimized
+
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://age.fincalcbox.com/sitemap.xml
