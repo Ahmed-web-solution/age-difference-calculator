@@ -45,7 +45,8 @@ self.addEventListener('install', (event) => {
       return Promise.resolve();
     })
   );
-  self.skipWaiting();
+  // Don't auto-skip waiting - only skip when user explicitly updates
+  // self.skipWaiting(); // Commented out to prevent auto-updates in dev/preview
 });
 
 // Activate event - clean up old caches and notify clients
@@ -61,13 +62,24 @@ self.addEventListener('activate', (event) => {
         self.clients.claim()
       ]);
     }).then(() => {
-      // Notify all clients about the update
+      // Only notify clients about updates in production
+      // Don't send update notifications for localhost or preview builds
       return self.clients.matchAll().then(clients => {
         clients.forEach(client => {
-          client.postMessage({
-            type: 'SW_UPDATED',
-            message: 'New version available! Refresh to update.'
-          });
+          const url = new URL(client.url);
+          const hostname = url.hostname;
+          
+          // Only send update notification on production domains
+          const isProduction = hostname !== 'localhost' && 
+                               hostname !== '127.0.0.1' && 
+                               !hostname.includes('preview');
+          
+          if (isProduction) {
+            client.postMessage({
+              type: 'SW_UPDATED',
+              message: 'New version available! Refresh to update.'
+            });
+          }
         });
       });
     })

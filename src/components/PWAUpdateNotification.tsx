@@ -6,7 +6,23 @@ const PWAUpdateNotification = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [registration, setRegistration] = useState<ServiceWorkerRegistration | null>(null);
 
+  // Check if we're in production environment
+  const isProduction = () => {
+    const hostname = window.location.hostname;
+    // Only show updates on production domain, not localhost or preview builds
+    return hostname !== 'localhost' && 
+           hostname !== '127.0.0.1' && 
+           !hostname.includes('preview') &&
+           !hostname.includes('localhost');
+  };
+
   useEffect(() => {
+    // Don't run PWA update check in non-production environments
+    if (!isProduction()) {
+      console.log('PWA update notifications disabled in development/preview mode');
+      return;
+    }
+
     if ('serviceWorker' in navigator) {
       // Listen for service worker updates
       navigator.serviceWorker.ready.then((reg) => {
