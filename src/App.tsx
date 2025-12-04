@@ -1,15 +1,16 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { HelmetProvider } from "react-helmet-async";
 import PWAUpdateNotification from "@/components/PWAUpdateNotification";
 import ScrollToTop from "@/components/ScrollToTop";
 import RouteLoader from "@/components/RouteLoader";
 import PageLoader from "@/components/PageLoader";
+import { pageview } from "@/lib/gtag";
 
 // Lazy load all pages for code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -23,6 +24,17 @@ const BlogTags = lazy(() => import("./pages/BlogTags"));
 const BlogTagFilter = lazy(() => import("./pages/BlogTagFilter"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+// GA4 Analytics Listener Component
+function GAListener() {
+  const location = useLocation();
+
+  useEffect(() => {
+    pageview(location.pathname + location.search);
+  }, [location]);
+
+  return null;
+}
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -33,6 +45,9 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            {/* GA4 Analytics Listener */}
+            <GAListener />
+            
             {/* Route Loading Progress Bar */}
             <RouteLoader />
             
