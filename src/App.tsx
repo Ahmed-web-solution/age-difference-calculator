@@ -18,6 +18,7 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Disclaimer = lazy(() => import("./pages/Disclaimer"));
 const Contact = lazy(() => import("./pages/Contact"));
+const About = lazy(() => import("./pages/About"));
 const BlogIndex = lazy(() => import("./pages/BlogIndex"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const BlogTags = lazy(() => import("./pages/BlogTags"));
@@ -65,6 +66,7 @@ const App = () => (
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/disclaimer" element={<Disclaimer />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<BlogIndex />} />
                 <Route path="/blog/tags" element={<BlogTags />} />
                 <Route path="/blog/tags/:tag" element={<BlogTagFilter />} />

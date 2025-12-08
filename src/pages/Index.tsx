@@ -80,6 +80,7 @@ const Index = () => {
       <footer role="contentinfo" className="bg-gradient-to-r from-muted/30 via-muted/20 to-muted/30 py-6 sm:py-8 md:py-12 px-3 sm:px-4 border-t border-border mt-8 sm:mt-10 md:mt-12">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-muted-foreground">
+            <Link to="/about" className="hover:text-primary transition-colors">About</Link>
             <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
             <Link to="/disclaimer" className="hover:text-primary transition-colors">Disclaimer</Link>
