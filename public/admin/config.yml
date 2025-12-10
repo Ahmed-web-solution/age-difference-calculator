@@ -1,13 +1,14 @@
 # Decap CMS Configuration for FinCalcBox Blog
 # Documentation: https://decapcms.org/docs/configuration-options/
 
+# Backend configuration
+# IMPORTANT: This is TEST MODE - for production, set up GitHub OAuth
 backend:
-  name: github
-  repo: Ahmed-web-solution/age-difference-calculator
-  branch: main
-  
-# Uncomment for local development testing (optional)
-# local_backend: true
+  name: test-repo
+  # For production, uncomment and use:
+  # name: github
+  # repo: Ahmed-web-solution/age-difference-calculator
+  # branch: main
 
 # Media files configuration
 media_folder: "public/blog-images" # Where to store uploaded images
