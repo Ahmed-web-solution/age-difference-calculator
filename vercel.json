@@ -1,11 +1,7 @@
 {
     "rewrites": [
         {
-            "source": "/admin/:path*",
-            "destination": "/admin/:path*"
-        },
-        {
-            "source": "/((?!admin).*)",
+            "source": "/((?!admin|assets|blog-images|icons|favicon|manifest|robots|sitemap|service-worker|ads.txt|og-image).*)",
             "destination": "/index.html"
         }
     ],
@@ -37,6 +33,15 @@
         },
         {
             "source": "/service-worker.js",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=0, must-revalidate"
+                }
+            ]
+        },
+        {
+            "source": "/admin/(.*)",
             "headers": [
                 {
                     "key": "Cache-Control",
