@@ -1,0 +1,65 @@
+# Decap CMS Configuration for FinCalcBox Blog
+# Documentation: https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: github
+  repo: Ahmed-web-solution/age-difference-calculator
+  branch: main
+  
+# Uncomment for local development testing (optional)
+# local_backend: true
+
+# Media files configuration
+media_folder: "public/blog-images" # Where to store uploaded images
+public_folder: "/blog-images" # Public URL path for images
+
+# Publish mode - editorial workflow (draft/review/publish)
+publish_mode: editorial_workflow
+
+# Site URL (optional, for preview links)
+site_url: https://age.fincalcbox.com
+display_url: https://age.fincalcbox.com
+
+# Collections - Content types
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Posts" # Used in the UI
+    folder: "content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    
+    # Editor settings
+    editor:
+      preview: true
+    
+    # Fields for each blog post
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true, hint: "SEO-optimized blog post title (60-70 characters recommended)" }
+      
+      - { label: "Description", name: "description", widget: "text", required: true, hint: "Meta description for SEO (150-160 characters recommended)" }
+      
+      - { label: "Slug", name: "slug", widget: "string", required: true, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Must be lowercase with hyphens only (e.g., my-blog-post)"], hint: "URL-friendly slug (e.g., how-age-calculators-work)" }
+      
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      
+      - { label: "Author", name: "author", widget: "string", default: "FinCalcBox Team", required: true }
+      
+      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min read", required: true, hint: "Estimated reading time (e.g., 8 min read)" }
+      
+      - { label: "Tags", name: "tags", widget: "list", required: true, min: 1, max: 5, hint: "Add 1-5 relevant tags for categorization" }
+      
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: true, hint: "Upload blog post header image (recommended: 1200x630px, WebP format)" }
+      
+      - { label: "Body", name: "body", widget: "markdown", required: true, hint: "Main blog post content in Markdown format" }
+
+# Optional: Configure sidebar (future expansion)
+# collections:
+#   - name: "pages"
+#     label: "Pages"
+#     files:
+#       - label: "About Page"
+#         name: "about"
+#         file: "content/pages/about.md"
+#         fields:
+#           - {label: "Title", name: "title", widget: "string"}
+#           - {label: "Body", name: "body", widget: "markdown"}

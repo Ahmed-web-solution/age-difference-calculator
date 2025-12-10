@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Content Manager - FinCalcBox Blog</title>
+  
+  <!-- Decap CMS -->
+  <link href="https://unpkg.com/decap-cms@^3.1.11/dist/decap-cms.css" rel="stylesheet" />
+  
+  <style>
+    /* Custom styling for admin panel */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <!-- Decap CMS App will mount here -->
+  <script src="https://unpkg.com/decap-cms@^3.1.11/dist/decap-cms.js"></script>
+  
+  <script>
+    // Custom preview styles for blog posts
+    CMS.registerPreviewStyle("https://unpkg.com/tailwindcss@^3.4.0/dist/tailwind.min.css");
+    
+    // Custom preview template (optional)
+    var PostPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var title = entry.getIn(['data', 'title']);
+        var description = entry.getIn(['data', 'description']);
+        var body = entry.getIn(['data', 'body']);
+        var image = entry.getIn(['data', 'featuredImage']);
+        var tags = entry.getIn(['data', 'tags']);
+        
+        return h('div', {className: "prose max-w-4xl mx-auto p-8"},
+          image ? h('img', {src: image, className: "w-full h-64 object-cover rounded-lg mb-6"}) : null,
+          h('h1', {className: "text-4xl font-bold mb-4"}, title),
+          h('p', {className: "text-xl text-gray-600 mb-6"}, description),
+          tags ? h('div', {className: "flex gap-2 mb-6"}, 
+            tags.map(function(tag) {
+              return h('span', {className: "px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"}, tag);
+            })
+          ) : null,
+          h('div', {dangerouslySetInnerHTML: {__html: this.props.widgetFor('body')}})
+        );
+      }
+    });
+    
+    CMS.registerPreviewTemplate("blog", PostPreview);
+  </script>
+</body>
+</html>

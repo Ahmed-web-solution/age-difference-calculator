@@ -5,13 +5,14 @@ import Navbar from "@/components/Navbar";
 import AdContainer from "@/components/AdContainer";
 import BlogPreview from "@/components/BlogPreview";
 import SEO from "@/components/SEO";
+import Hero from "@/components/Hero";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Skip to main content link for accessibility */}
       <a 
-        href="#main-content" 
+        href="#age-calculator" 
         className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-primary focus:text-primary-foreground focus:rounded-br-lg"
       >
         Skip to main content
@@ -22,22 +23,11 @@ const Index = () => {
         canonicalUrl="https://age.fincalcbox.com"
       />
       
-      {/* Navbar */}
+      {/* Navbar - Fixed/sticky for accessibility */}
       <Navbar />
 
-      {/* Header with gradient - Mobile optimized */}
-      <header role="banner" className="bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 py-6 sm:py-8 md:py-12 px-3 sm:px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-center gap-4 mb-3 sm:mb-4">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center">
-              Age Difference Calculator
-            </h1>
-          </div>
-          <p className="text-center text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-            Enter two dates and instantly find the exact age gap in years, months, and days
-          </p>
-        </div>
-      </header>
+      {/* HERO SECTION - Full viewport height */}
+      <Hero />
 
       {/* Top Ad - Reduced padding */}
       <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4 md:py-6">
@@ -45,7 +35,7 @@ const Index = () => {
       </div>
 
       {/* Main Calculator Section - Mobile optimized */}
-      <main id="main-content" role="main" className="py-6 sm:py-8 md:py-12 px-3 sm:px-4">
+      <main id="age-calculator" role="main" className="py-6 sm:py-8 md:py-12 px-3 sm:px-4">
         <div className="max-w-6xl mx-auto">
           <div className="bg-background/50 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 neomorph">
             <Calculator />
